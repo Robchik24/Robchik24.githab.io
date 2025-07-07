@@ -1,13 +1,66 @@
-<!-- WellcomeAI Voice Assistant -->
-<script>
-    (function() {
-        var script = document.createElement('script');
-        script.src = 'https://voicyfy.ru/static/widget.js';
-        script.dataset.assistantId = 'b57425e9-607e-4404-9171-9eca00ed8572';
-        script.dataset.server = 'https://voicyfy.ru'; // Explicitly specify the server
-        script.dataset.position = 'center'; // Widget position
-        script.async = true;
-        document.head.appendChild(script);
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Голосовой ассистент — Вася Новиков</title>
+
+  <!-- 1. СТИЛИ ВИДЖЕТА + наши переопределения -->
+  <style>
+    /* Базовые стили Voicyfy (оставляем как есть) */
+    @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css");
+
+    /* ───── НАШИ ПРАВИЛА ───── */
+    /* Контейнер: ровно по центру экрана */
+    .wellcomeai-widget-container{
+      position:fixed !important;
+      top:50%   !important;
+      left:50%  !important;
+      bottom:auto !important;
+      right:auto  !important;
+      transform:translate(-50%, -50%) !important;
+      z-index:2147483647 !important;
+    }
+
+    /* Мини-кнопка (свернутое состояние) — делаем больше */
+    .wellcomeai-widget-button{
+      width:150px !important;
+      height:150px !important;
+    }
+
+    /* Раскрытое окно виджета — тоже центр и крупнее */
+    .wellcomeai-widget-expanded{
+      width:420px  !important;
+      height:520px !important;
+      top:50%  !important;
+      left:50% !important;
+      bottom:auto !important;
+      right:auto !important;
+      transform:translate(-50%, -50%) !important;
+    }
+  </style>
+</head>
+
+<body style="margin:0;background:#f9fafc;">
+
+  <!-- 2. КОРНЕВОЙ КОНТЕЙНЕР (скрипт сам внутрь вставит разметку) -->
+  <div id="voicyfy-root"></div>
+
+  <!-- 3. ЕДИНСТВЕННЫЙ ЗАПУСКАЮЩИЙ СКРИПТ -->
+  <script>
+    (function () {
+      const script = document.createElement('script');
+      script.src = 'https://voicyfy.ru/static/widget.js';
+      script.async = true;
+
+      /* ==== ПАРАМЕТРЫ ВАШЕГО АССИСТЕНТА ==== */
+      script.dataset.assistantId = 'b57425e9-607e-4404-9171-9eca00ed8572';
+      script.dataset.server      = 'https://voicyfy.ru';
+      /* data-position не нужен: центруем CSS-ом */
+
+      /* Вставляем скрипт в наш контейнер,
+         чтобы вся разметка была потомком #voicyfy-root */
+      document.getElementById('voicyfy-root').appendChild(script);
     })();
-</script>
-<!-- End WellcomeAI -->
+  </script>
+</body>
+</html>
