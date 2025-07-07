@@ -1,59 +1,13 @@
-<!-- Корневой контейнер для виджета -->
-<div id="voicyfy-wrapper"></div>
-
-<!-- Подключаем скрипт Voicyfy как обычно -->
+<!-- WellcomeAI Voice Assistant -->
 <script>
-(function () {
-  const script = document.createElement('script');
-  script.src = 'https://voicyfy.ru/static/widget.js';
-
-  /* === ваши параметры === */
-  script.dataset.assistantId = 'b57425e9-607e-4404-9171-9eca00ed8572';
-  script.dataset.server      = 'https://voicyfy.ru';
-  /* позиция больше не нужна — будем управлять CSS */
-  /* script.dataset.position = 'bottom-right'; */
-
-  script.async = true;
-
-  /* ВКЛАДЫВАЕМ скрипт прямо в контейнер, а не в <head>,
-     чтобы Voicyfy рендерила кнопки и ифреймы именно здесь */
-  document.getElementById('voicyfy-wrapper').appendChild(script);
-})();
+    (function() {
+        var script = document.createElement('script');
+        script.src = 'https://voicyfy.ru/static/widget.js';
+        script.dataset.assistantId = 'b57425e9-607e-4404-9171-9eca00ed8572';
+        script.dataset.server = 'https://voicyfy.ru'; // Explicitly specify the server
+        script.dataset.position = 'center'; // Widget position
+        script.async = true;
+        document.head.appendChild(script);
+    })();
 </script>
-
-<!-- Стили: делаем блок фиксированным, по центру и крупным -->
-<style>
- #voicyfy-wrapper{
-   position:fixed;
-   /* центр экрана */
-   top:50%;
-   left:50%;
-   transform:translate(-50%,-50%);
-   z-index:9999;              /* поверх всего */
-   /* задаём «базовый» размер виджета */
-   width: 420px;
-   height: 420px;
- }
-
- /* Если у Voicyfy-скрипта есть собственный контейнер/кнопка –
-    растянем их под наши размеры.
-    Проверьте через DevTools, как именно называется класс;
-    в большинстве сборок это .voicyfy-widget-launcher      */
- #voicyfy-wrapper .voicyfy-widget-launcher,
- #voicyfy-wrapper .voicyfy-widget,
- #voicyfy-wrapper iframe{
-   width: 100% !important;
-   height: 100% !important;
-   border-radius: 50% !important;   /* круглая кнопка */
-   overflow: hidden;
- }
-
- /* Доп. способ «увеличить» – масштабирование, если
-    внутренние размеры заданы жёстко (например 96×96)      */
- /* 
- #voicyfy-wrapper{
-   transform:translate(-50%,-50%) scale(1.6);
-   transform-origin:center;
- }
- */
-</style>
+<!-- End WellcomeAI -->
