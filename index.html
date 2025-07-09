@@ -1,66 +1,13 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-<meta charset="utf-8">
-<title>Вася Новиков — голосовой ассистент</title>
-
-<!-- базовый шрифт и иконки -->
-<link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-<style>
-/* ================= НАШИ ПАТЧИ ================= */
-
-/* html/body во весь экран, чтобы 100 vw / 100 vh работали корректно */
-html,body{height:100%;margin:0;background:#f9fafc;overflow:hidden;}
-
-/* контейнер виджета ровно по центру */
-.wellcomeai-widget-container{
-  position:fixed !important;
-  top:50% !important; left:50% !important;
-  transform:translate(-50%,-50%) !important;
-  z-index:2147483647 !important;
-}
-
-/* кнопка-иконка крупнее */
-.wellcomeai-widget-button{
-  width:140px !important; height:140px !important;
-}
-
-/* раскрытое окно — 90 % экрана, но в пределах 600×800 */
-.wellcomeai-widget-expanded{
-  width:clamp(320px,90vw,600px)  !important;
-  height:clamp(460px,90vh,800px) !important;
-  top:50% !important; left:50% !important;
-  transform:translate(-50%,-50%) !important;
-}
-
-/* на очень маленьких экранах (≤ 420 px) чуть уменьшаем кнопку */
-@media (max-width:420px){
-  .wellcomeai-widget-button{width:100px !important;height:100px !important;}
-}
-</style>
-</head>
-
-<body>
-
-<!-- корневой контейнер -->
-<div id="voicyfy-root"></div>
-
+<!-- WellcomeAI Voice Assistant -->
 <script>
-(function () {
-  const scr = document.createElement('script');
-  scr.src   = 'https://voicyfy.ru/static/widget.js';
-  scr.async = true;
-
-  /* ============== ВАШ АССИСТЕНТ ============== */
-  scr.dataset.assistantId = 'b57425e9-607e-4404-9171-9eca00ed8572';
-  scr.dataset.server      = 'https://voicyfy.ru';
-
-  /* вставляем скрипт в контейнер */
-  document.getElementById('voicyfy-root').appendChild(scr);
-})();
+    (function() {
+        var script = document.createElement('script');
+        script.src = 'https://voicyfy.ru/static/widget.js';
+        script.dataset.assistantId = 'b57425e9-607e-4404-9171-9eca00ed8572';
+        script.dataset.server = 'https://voicyfy.ru'; // Explicitly specify the server
+        script.dataset.position = 'bottom-right'; // Widget position
+        script.async = true;
+        document.head.appendChild(script);
+    })();
 </script>
-
-</body>
-</html>
+<!-- End WellcomeAI -->
