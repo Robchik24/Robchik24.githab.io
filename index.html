@@ -48,16 +48,17 @@ html,body{height:100%;margin:0;background:#f9fafc;overflow:hidden;}
 <div id="voicyfy-root"></div>
 
 <script>
-    (function() {
-        var script = document.createElement('script');
-        script.src = 'https://voicyfy.ru/static/widget.js';
-        script.dataset.assistantId = 'b57425e9-607e-4404-9171-9eca00ed8572';
-        script.dataset.server = 'https://voicyfy.ru'; // Explicitly specify the server
-        script.dataset.position = 'bottom-right'; // Widget position
-        script.async = true;
+(function () {
+  const scr = document.createElement('script');
+  scr.src   = 'https://voicyfy.ru/static/widget.js';
+  scr.async = true;
+
+  /* ============== ВАШ АССИСТЕНТ ============== */
+  scr.dataset.assistantId = 'b57425e9-607e-4404-9171-9eca00ed8572';
+  scr.dataset.server      = 'https://voicyfy.ru';
 
   /* вставляем скрипт в контейнер */
-        document.getElementById('voicyfy-root').appendChild(scr);
+  document.getElementById('voicyfy-root').appendChild(scr);
 })();
 </script>
 
